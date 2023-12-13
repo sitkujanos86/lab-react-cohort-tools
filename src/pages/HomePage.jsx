@@ -1,6 +1,6 @@
 import { useState } from "react";
 import StudentCard from "../components/StudentCard";
-
+import { Link } from "react-router-dom";
 import studentsData from "../assets/students.json";
 
 function HomePage() {
@@ -20,8 +20,11 @@ function HomePage() {
 
       {students &&
         students.map((student) => {
+          const studentLink = `/students/${student._id}`;
           return (
-              <StudentCard key={student._id} {...student} />
+            <Link key={student._id} to={studentLink} className="block hover:bg-gray-200">
+            <StudentCard {...student} />
+          </Link>
           );
         })}
     </div>
